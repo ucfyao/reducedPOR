@@ -1,3 +1,4 @@
+#pragma once
 /*
  *    No matter where you got this code from, be aware that MIRACL is NOT 
  *    free software. For commercial use a license is required.

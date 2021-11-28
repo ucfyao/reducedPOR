@@ -1,3 +1,4 @@
+#pragma once
 /*
  *    MIRACL  C++ Header file ZZn4.h
  *

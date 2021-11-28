@@ -14,7 +14,6 @@ extern "C"
 #include <fstream>
 #include <cstring>
 #include <time.h>
-#include "big.h"
 #include<windows.h>// QueryPerformanceFrequency,QueryPerformanceCounter头文件
 
 #include<stdio.h>
@@ -37,6 +36,8 @@ extern "C"
 //*********************************************
 
 #include "pairing_3.h"
+#include "big.h"
+
 using namespace std;
 //
 
@@ -263,7 +264,8 @@ void TagGen()
 	{
 		for(j=0;j<N;j++)
 		{
-			M[i][j] = (Big)rand(160);
+			// rand 此处rand需要两个参数
+			M[i][j] = (Big)rand(0,160);
 			//cout<<M[i][j]<<endl;
 		}
 	}			
@@ -286,7 +288,12 @@ void TagGen()
 		for(k = 0; k < N; k++)//bunch size
 		{	
 			temp = pfc->mult(g1, M[i][k]);//标签的第二部分
-			pfc->hash_and_map(Hash_name,"a");//文件名叫a
+			// 在vs2019中定义char[] 在转为char*传入类型错误
+			const char* constsrdd = "dd";
+			char* dd = nullptr;
+			dd = const_cast<char*>(constsrdd);
+
+			pfc->hash_and_map(Hash_name, dd);//文件名叫a
 			temp = Hash_name + temp;			//H(name)
 			temp = pfc->mult(temp,ak[k]);
 
@@ -354,7 +361,8 @@ void Challenge()
 	int i;
 	for (i = 0; i<challenge_num; ++i)
 	{
-		 challenge_block[i] = randbits(10);   //V_i
+		 challenge_block[i] = randbits(10);
+		 //challenge_block[i] = randbits(10);   //V_i
 		// cout << "挑战块：" << i << ":" << challenge_block[i] << endl;
 	}
 	clock_t end = clock();
@@ -385,7 +393,11 @@ void Response()
 	{
 		clock_t start1 = clock();//time starts/******one ei********************/
 		tempG1 = pfc->mult(pkG1[0], M[1][0]);
-		pfc->hash_and_map(Hash_name,"a");//文件名叫a
+		// 在vs2019中定义char[] 在转为char*传入类型错误
+		const char* constsraa = "a";
+		char* aa = nullptr;
+		aa = const_cast<char*>(constsraa);
+		pfc->hash_and_map(Hash_name,aa);//文件名叫a
 		tempG1 = (Hash_name + tempG1);
 		tempGT = pfc->pairing(tpk_1[0],tempG1);
 
@@ -394,7 +406,11 @@ void Response()
 			//for (i = 0; i<challenge_num; i++)
 			//pfc->precomp_for_mult(pkG1[0]);  //分母左边
 			tempG1 = pfc->mult(g1, M[1][l]);
-			pfc->hash_and_map(Hash_name,"a");//文件名叫a
+			// 在vs2019中定义char[] 在转为char*传入类型错误
+			const char* constsrbb = "a";
+			char* bb = nullptr;
+			bb = const_cast<char*>(constsrbb);
+			pfc->hash_and_map(Hash_name, bb);//文件名叫a
 			tempG1 = (Hash_name + tempG1);
 
 			tempGT = tempGT * pfc->pairing(tpk_1[l],tempG1);
@@ -433,7 +449,11 @@ void Verify()
 	clock_t start = clock();
 		for(i=0;i<challenge_num;i++)
 		{	
-			pfc->hash_and_map(Hash_name,"a");//文件名叫a
+			// 在vs2019中定义char[] 在转为char*传入类型错误
+			const char* constsree = "ee";
+			char* ee = nullptr;
+			ee = const_cast<char*>(constsree);
+			pfc->hash_and_map(Hash_name,ee);//文件名叫a
 			//temp = Hash_name + commonG2[1];		//H(name)
 			temp_Hashname = temp_Hashname + pfc->mult(Hash_name,challenge_block[i]);
 		}

@@ -1,4 +1,5 @@
- /*   No matter where you got this code, be aware that MIRACL is NOT 
+#pragma once
+/*   No matter where you got this code, be aware that MIRACL is NOT
   *   free software. For commercial use a license is required.
   *	  See www.shamus.ie
   */

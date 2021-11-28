@@ -1,3 +1,5 @@
+#pragma once
+
 /*
  *    MIRACL  C++ Header file ecn2.h
  *

@@ -1,3 +1,5 @@
+#pragma once
+
 /*
  *    No matter where you got this code from, be aware that MIRACL is NOT 
  *    free software. For commercial use a license is required.
@@ -225,9 +227,9 @@ public:
 	BOOL member(const GT&);			// test if element is member of pairing friendly group
 
 	int precomp_for_pairing(G2&);  // precompute multiples of G2 that occur in Miller loop
-	int precomp_for_mult(G1&,BOOL small=FALSE);     // precompute multiples of G1 for precomputation
-	int precomp_for_mult(G2&,BOOL small=FALSE);
-	int precomp_for_power(GT&,BOOL small=FALSE);    // returns number of precomputed values
+	int precomp_for_mult(G1&,BOOL smallbool=FALSE);     // precompute multiples of G1 for precomputation
+	int precomp_for_mult(G2&,BOOL smallbool=FALSE);
+	int precomp_for_power(GT&,BOOL smallbool=FALSE);    // returns number of precomputed values
 
 	int spill(G2&,char *&);
 	void restore(char *,G2&);

@@ -1,3 +1,4 @@
+#pragma once
 /* 
  *   MIRACL compiler/hardware definitions - mirdef.h
  *   This version suitable for use with most 32-bit computers
