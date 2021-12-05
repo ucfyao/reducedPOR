@@ -47,6 +47,8 @@ Miracl precison(kSecurityLevel, 0);
 #define N 80//n
 #define bunch_num 60
 #define challenge_num 50
+char a[] = "aasass";
+char* b = a;
 
 PFC *pfc = new PFC(AES_SECURITY);  // initialise pairing-friendly curve
 Big order = pfc->order();  // get pairing-friendly group order

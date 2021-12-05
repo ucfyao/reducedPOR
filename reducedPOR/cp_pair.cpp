@@ -19,15 +19,23 @@
  */
 
 #define MR_PAIRING_CP
-#include "pairing_3.h"
+#include	"pairing_3.h"
 
 // Cocks-Pinch curve parameters, A,B and n, where p=3 mod 4
 // AES_SECURITY=80 bit curve
 // Curve E:y^2=x^3-3x+B, #E=COF*order, modulus p
 
-static char MODtext[]="8D5006492B424C09D2FEBE717EE382A57EBE3A352FC383E1AC79F21DDB43706CFB192333A7E9CF644636332E83D90A1E56EFBAE8715AA07883483F8267E80ED3";
-static char Btext[]="609993837367998001C95B87A6BA872135E26906DB4C192D6E038486177A3EDF6C50B9BB20DF881F2BD05842F598F3E037B362DBF89F0A62E5871D41D951BF8E";
-static char COFtext[]="11AA00C9256849813A5FD7CE2FDC7054AFD7809E7F7FD948C4B9C1C1E76FFEFF4ECAB83C950112DECB41D6EDA";
+const char SMODtext[]="8D5006492B424C09D2FEBE717EE382A57EBE3A352FC383E1AC79F21DDB43706CFB192333A7E9CF644636332E83D90A1E56EFBAE8715AA07883483F8267E80ED3";
+//const char SBtext[]="609993837367998001C95B87A6BA872135E26906DB4C192D6E038486177A3EDF6C50B9BB20DF881F2BD05842F598F3E037B362DBF89F0A62E5871D41D951BF8E";
+const char SCOFtext[]="11AA00C9256849813A5FD7CE2FDC7054AFD7809E7F7FD948C4B9C1C1E76FFEFF4ECAB83C950112DECB41D6EDA";
+
+char* MODtext = const_cast<char*>(SMODtext);
+//char* Btext = const_cast<char*>(SBtext);
+char* COFtext = const_cast<char*>(SCOFtext);
+
+//char MODtext[] = "8D5006492B424C09D2FEBE717EE382A57EBE3A352FC383E1AC79F21DDB43706CFB192333A7E9CF644636332E83D90A1E56EFBAE8715AA07883483F8267E80ED3";
+char Btext[] = "609993837367998001C95B87A6BA872135E26906DB4C192D6E038486177A3EDF6C50B9BB20DF881F2BD05842F598F3E037B362DBF89F0A62E5871D41D951BF8E";
+//char COFtext[] = "11AA00C9256849813A5FD7CE2FDC7054AFD7809E7F7FD948C4B9C1C1E76FFEFF4ECAB83C950112DECB41D6EDA";
 
 void read_only_error(void)
 {
@@ -292,6 +300,7 @@ int PFC::spill(G2& w,char *& bytes)
 	delete [] w.ptable; 
 	w.ptable=NULL;
 	return len;
+
 }
 
 //
@@ -504,16 +513,43 @@ PFC::PFC(int s)
 	miracl *mip=mirsys(words,0); 
 	mip->IOBASE=16;
 #endif
+	//const char* constsraa = "a";
+	//char* aa = const_cast<char*>(constsraa);
+	cout << "No errQQQQQ" << endl;
+	//miracl* mip = mirsys(100000, 16);
+	//mip->IOBASE = 16;
+	char aa[] = "DEADBEEF";
+	big a;
+	a = mirvar(0);
+	cinstr(a, aa);
 
-	B=new Big;
+	cout << "No err======" << endl;
+	B = new Big(a);
+
 	mod=new Big;
 	ord=new Big;
 	cof=new Big;
 	npoints=new Big;
 	trace=new Big;
+	cout << "No err" << endl;
 
-	*B=Btext;
+	//char ands[] = "asd";
+	
+	//cinstr(B, ands);
 
+	//*B=b;
+	
+	//char ands[] = "asd";
+	//cinstr(as_a,ands);
+	//c = Big(ands);
+
+	cout << "No err A" << endl;
+
+	//*B = aa;
+	//cinstr(*B,aa);
+	//*B = Btext;	
+	cout << "No err B" << endl;
+	exit(0);
 	*cof=COFtext;
 	*ord=pow((Big)2,159)+pow((Big)2,17)+1;
 	*npoints=*cof*(*ord);

@@ -92,6 +92,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\zihao\Desktop\reducedPOR\reducedPOR;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>miracl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -139,6 +141,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\MIRACL\source\mrio1.c" />
+    <ClCompile Include="..\..\MIRACL\source\mrio2.c" />
     <ClCompile Include="big.cpp" />
     <ClCompile Include="cp_pair.cpp" />
     <ClCompile Include="ecn.cpp" />
@@ -163,9 +167,6 @@
     <ClInclude Include="zzn12a.h" />
     <ClInclude Include="zzn2.h" />
     <ClInclude Include="zzn4.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="miracl.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

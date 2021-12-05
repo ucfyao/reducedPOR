@@ -141,7 +141,7 @@ class Big
 
 public:
 
-    Big()        {MR_INIT_BIG } 
+    Big() { MR_INIT_BIG }
     Big(int j)   {MR_INIT_BIG convert(j,fn); }
     Big(unsigned int j) {MR_INIT_BIG uconvert(j,fn); }
     Big(long lg) {MR_INIT_BIG lgconv(lg,fn);}
@@ -161,6 +161,7 @@ public:
 
 #ifndef MR_SIMPLE_IO
 #ifdef MR_SIMPLE_BASE
+
     Big(char* s) {MR_INIT_BIG instr(fn,s);}
 #else
     Big(char* s) {MR_INIT_BIG cinstr(fn,s);}

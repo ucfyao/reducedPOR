@@ -45,6 +45,12 @@
     <ClCompile Include="zzn12a.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\MIRACL\source\mrio2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\MIRACL\source\mrio1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="big.h">
@@ -83,8 +89,5 @@
     <ClInclude Include="zzn12a.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="miracl.lib" />
   </ItemGroup>
 </Project>
